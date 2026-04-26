@@ -1,3 +1,4 @@
+[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/ir0n2wwK)
 # Web Technologies - Exercise 3
 
 The third exercise is about styling and responsive design, but also about semantic HTML and a new endpoint on the server. As usual, you find detailed information about these parts in the **Tasks** section below.
