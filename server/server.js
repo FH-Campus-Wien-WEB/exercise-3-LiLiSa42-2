@@ -24,45 +24,25 @@ function fetchJson(url) {
   });
 }
 
-const genres = [
-  "Action",
-  "Adventure",
-  "Animation",
-  "Biography",
-  "Comedy",
-  "Crime",
-  "Documentary",
-  "Drama",
-  "Family",
-  "Fantasy",
-  "Film Noir",
-  "History",
-  "Horror",
-  "Music",
-  "Musical",
-  "Mystery",
-  "Romance",
-  "Sci-Fi",
-  "Short Film",
-  "Sport",
-  "Superhero",
-  "Thriller",
-  "War",
-  "Western"
-];
-
 // Parse urlencoded bodies
 app.use(bodyParser.json()); 
 
 // Serve static content in directory 'files'
 app.use(express.static(path.join(__dirname, 'files')));
 
-/* Task 1.2: Add a GET /genres endpoint:
-   This endpoint returns the full genre list as defined in edit.html.
-*/
+function getGenresFromMovies() {
+  const uniqueGenres = new Set();
+  Object.values(movieModel).forEach(movie => {
+    if (Array.isArray(movie.Genres)) {
+      movie.Genres.forEach(genre => uniqueGenres.add(genre));
+    }
+  });
+  return Array.from(uniqueGenres).sort((a, b) => a.localeCompare(b));
+}
+
 app.get('/genres', function (req, res) {
-  res.send(genres);
-})
+  res.json(getGenresFromMovies());
+});
 
 app.get('/movies', function (req, res) {
   let movies = Object.values(movieModel)
